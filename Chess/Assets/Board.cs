@@ -6,7 +6,7 @@ public class Board : MonoBehaviour
     public int worldWidth = 512, worldHeight = 512;
     int width, height;
 
-    private void Update()
+    private void Start()
     {
         width = worldWidth / size;
         height = worldHeight / size;
@@ -79,11 +79,11 @@ public class Board : MonoBehaviour
 
         if (!odd)
         {
-            return Color.black;
+            return new Color32(139, 69, 19, 255);
         }
         else
         {
-            return Color.white;
+            return new Color32(244, 164, 96, 255);
         }
     }
 }
