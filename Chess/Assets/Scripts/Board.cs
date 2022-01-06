@@ -2,16 +2,54 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
+    [Header("BoardGeneration")]
     public int size = 8;
     public int worldWidth = 512, worldHeight = 512;
-    int width, height;
+    int localWidth, localHeight;
+
+    [Header("BoardIndex")]
+    public int totalBoardSize = 64;
+    int[] boardIndices;
+    Vector2[,] boardCords;
 
     private void Start()
     {
-        width = worldWidth / size;
-        height = worldHeight / size;
+        boardIndices = new int[totalBoardSize];
+        boardCords = new Vector2[(int) Mathf.Sqrt(totalBoardSize), (int) Mathf.Sqrt(totalBoardSize)];
+
+        InitializeBoardArrays();
+
+        localWidth = worldWidth / size;
+        localHeight = worldHeight / size;
+
+        Print2DArray();
 
         GetComponent<Renderer>().material.mainTexture = GenerateTexture();
+    }
+
+    void InitializeBoardArrays()
+    {
+        for(int i = 0; i < boardIndices.Length; i++)
+        {
+            boardIndices[i] = i;
+        }
+
+        float x = 4.0f, y = 4.0f;
+        for(int i = 0; i < boardCords.GetLength(0); i++)
+        {
+            y -= .5f;
+            for(int k = 0; i < boardCords.GetLength(1); k++)
+            {
+                x -= .5f;
+
+                boardCords[i, k] = new Vector2(x, y);
+            }
+        }
+    }
+
+    void Print2DArray()
+    {
+        boardCords.ToString();
     }
 
     Texture2D GenerateTexture()
@@ -43,7 +81,7 @@ public class Board : MonoBehaviour
         } 
         else
         {
-            widthUnit = x / width;
+            widthUnit = x / localWidth;
         }
         if(y == 0)
         {
@@ -51,7 +89,7 @@ public class Board : MonoBehaviour
         }
         else
         {
-            heightUnit = y / height;
+            heightUnit = y / localHeight;
         }
 
         if(heightUnit % 2 != 0)
