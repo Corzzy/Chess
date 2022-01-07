@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RookBehavior : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    Board board;
 
-    // Update is called once per frame
-    void Update()
+    int[] offsets = { -8, 1, 8, -1 };
+
+    public bool white;
+    int indexPos;
+
+
+    private void Start()
     {
-        
+        board = GameObject.FindGameObjectWithTag("Board").GetComponent<Board>();
+
+
     }
 }

@@ -1,18 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PawnBehavior : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    int[] offsets = { -9, -8, -7, 9, 8, 7 };
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool white;
+    int indexPos;
 }

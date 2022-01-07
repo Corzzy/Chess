@@ -35,7 +35,7 @@ public class Board : MonoBehaviour
         }
 
         float x = 4.0f, y = 4.0f;
-        for(int i = 0; i < boardCords.GetLength(0); i++)
+        /*for(int i = 0; i < boardCords.GetLength(0); i++)
         {
             y -= .5f;
             for(int k = 0; i < boardCords.GetLength(1); k++)
@@ -44,7 +44,7 @@ public class Board : MonoBehaviour
 
                 boardCords[i, k] = new Vector2(x, y);
             }
-        }
+        }*/
     }
 
     void Print2DArray()
