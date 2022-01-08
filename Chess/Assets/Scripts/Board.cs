@@ -9,48 +9,27 @@ public class Board : MonoBehaviour
 
     [Header("BoardIndex")]
     public int totalBoardSize = 64;
-    int[] boardIndices;
-    Vector2[,] boardCords;
+    Vector2[] boardCoords;
 
     private void Start()
     {
-        boardIndices = new int[totalBoardSize];
-        boardCords = new Vector2[(int) Mathf.Sqrt(totalBoardSize), (int) Mathf.Sqrt(totalBoardSize)];
-
-        InitializeBoardArrays();
+        boardCoords = GenerateBoardCoords(totalBoardSize);
 
         localWidth = worldWidth / size;
         localHeight = worldHeight / size;
 
-        Print2DArray();
-
         GetComponent<Renderer>().material.mainTexture = GenerateTexture();
     }
 
-    void InitializeBoardArrays()
-    {
-        for(int i = 0; i < boardIndices.Length; i++)
-        {
-            boardIndices[i] = i;
-        }
+    Vector2 [] GenerateBoardCoords(int size)
+	{
+        Vector2[] coords = new Vector2[size];
 
-        float x = 4.0f, y = 4.0f;
-        /*for(int i = 0; i < boardCords.GetLength(0); i++)
-        {
-            y -= .5f;
-            for(int k = 0; i < boardCords.GetLength(1); k++)
-            {
-                x -= .5f;
+        float x, y;
+        
 
-                boardCords[i, k] = new Vector2(x, y);
-            }
-        }*/
-    }
-
-    void Print2DArray()
-    {
-        boardCords.ToString();
-    }
+        return coords;
+	}
 
     Texture2D GenerateTexture()
     {
