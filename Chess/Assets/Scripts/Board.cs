@@ -6,14 +6,20 @@ public class Board : MonoBehaviour
     public int size = 8;
     public int worldWidth = 512, worldHeight = 512;
     int localWidth, localHeight;
+    
+    [Space]
+    public Color colorOdd;
+    public Color colorEven;
 
-    [Header("BoardIndex")]
+    [Header("Tileset")]
+    Occupant occupant;
+
     public int totalBoardSize = 64;
-    Vector2[] boardCoords;
+    GameObject[] tileSet;
 
     private void Start()
     {
-        boardCoords = GenerateBoardCoords(totalBoardSize);
+        
 
         localWidth = worldWidth / size;
         localHeight = worldHeight / size;
@@ -21,15 +27,7 @@ public class Board : MonoBehaviour
         GetComponent<Renderer>().material.mainTexture = GenerateTexture();
     }
 
-    Vector2 [] GenerateBoardCoords(int size)
-	{
-        Vector2[] coords = new Vector2[size];
-
-        float x, y;
-        
-
-        return coords;
-	}
+    
 
     Texture2D GenerateTexture()
     {
@@ -96,11 +94,11 @@ public class Board : MonoBehaviour
 
         if (!odd)
         {
-            return new Color32(139, 69, 19, 255);
+            return colorEven;
         }
         else
         {
-            return new Color32(244, 164, 96, 255);
+            return colorOdd;
         }
     }
 }
