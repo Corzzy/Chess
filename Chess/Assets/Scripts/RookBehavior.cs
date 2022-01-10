@@ -6,7 +6,6 @@ public class RookBehavior : MonoBehaviour
 
     int[] offsets = { -8, 1, 8, -1 };
 
-    public bool white;
     int indexPos;
 
 
