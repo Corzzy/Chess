@@ -1,5 +1,6 @@
 using UnityEngine;
 
+public enum Turn { Whiteturn, Blackturn };
 public class Board : MonoBehaviour
 {
     [Header("BoardGeneration")]
@@ -11,15 +12,13 @@ public class Board : MonoBehaviour
     public Color colorOdd;
     public Color colorEven;
 
-    [Header("Tileset")]
-    Occupant occupant;
-
-    public int totalBoardSize = 64;
-    GameObject[] tileSet;
+    //[Header("TurnSystem")]
+    public static Turn turn;
+    
 
     private void Start()
     {
-        
+        turn = Turn.Whiteturn;
 
         localWidth = worldWidth / size;
         localHeight = worldHeight / size;
@@ -27,7 +26,17 @@ public class Board : MonoBehaviour
         GetComponent<Renderer>().material.mainTexture = GenerateTexture();
     }
 
-    
+    public static void NextTurn()
+    {
+        if(turn == Turn.Whiteturn)
+        {
+            turn = Turn.Blackturn;
+        }
+        else
+        {
+            turn = Turn.Whiteturn;
+        }
+    }
 
     Texture2D GenerateTexture()
     {
