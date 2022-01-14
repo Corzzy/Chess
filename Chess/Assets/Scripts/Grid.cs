@@ -19,7 +19,7 @@ public class Grid : MonoBehaviour
         int index = 0;
         for(double y = maxBound; y >= minBound; y -= 1f)
         {
-            for(double x = maxBound; x >= minBound; x -= 1f)
+            for(double x = minBound; x <= maxBound; x += 1f)
             {
                 GameObject tile = Instantiate(tilePrefab, new Vector3((float)x, (float)y, 0f), Quaternion.identity, transform);
                 tiles[index] = tile;
@@ -34,13 +34,13 @@ public class Grid : MonoBehaviour
         return tiles;
     }
 
-    public Vector2 SnapOnGrid(Vector3 mousePos)
+    public GameObject SnapOnGrid(Vector3 mousePos)
 	{
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
 
         Transform closestTile = FindClosestTile(worldPos);
 
-        return closestTile.position;
+        return closestTile.gameObject;
 	}
 
     Transform FindClosestTile(Vector3 worldPos)
