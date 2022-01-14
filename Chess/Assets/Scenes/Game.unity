@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 83662979}
   m_Layer: 0
   m_Name: Grid
-  m_TagString: Untagged
+  m_TagString: Grid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -244,6 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 0
+  currentTile: {fileID: 0}
 --- !u!114 &109265196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,6 +444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 1
+  currentTile: {fileID: 0}
 --- !u!1 &341399922
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,6 +518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 0
+  currentTile: {fileID: 0}
 --- !u!114 &341399926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -652,6 +655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 0
+  currentTile: {fileID: 0}
 --- !u!114 &348504855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,6 +901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 1
+  currentTile: {fileID: 0}
 --- !u!1 &441013311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,6 +1038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 1
+  currentTile: {fileID: 0}
 --- !u!1 &464281721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,6 +1112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 1
+  currentTile: {fileID: 0}
 --- !u!114 &464281725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1266,6 +1273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ffa5890b6a7a54a9b81ae598f7ca02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTile: {fileID: 0}
 --- !u!61 &499868356
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1305,6 +1313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 0
+  currentTile: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1524,6 +1533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 0
+  currentTile: {fileID: 0}
 --- !u!1 &863515720
 GameObject:
   m_ObjectHideFlags: 0
@@ -1696,6 +1706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 1
+  currentTile: {fileID: 0}
 --- !u!114 &912538962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1832,6 +1843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 0
+  currentTile: {fileID: 0}
 --- !u!114 &940178853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1844,6 +1856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ffa5890b6a7a54a9b81ae598f7ca02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTile: {fileID: 0}
 --- !u!212 &940178854
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2031,6 +2044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 0
+  currentTile: {fileID: 0}
 --- !u!1 &1051343686
 GameObject:
   m_ObjectHideFlags: 0
@@ -2104,6 +2118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 1
+  currentTile: {fileID: 0}
 --- !u!114 &1051343690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2116,6 +2131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ffa5890b6a7a54a9b81ae598f7ca02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTile: {fileID: 0}
 --- !u!212 &1051343691
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2303,6 +2319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 1
+  currentTile: {fileID: 0}
 --- !u!1 &1243391206
 GameObject:
   m_ObjectHideFlags: 0
@@ -2376,6 +2393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 1
+  currentTile: {fileID: 0}
 --- !u!114 &1243391210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2512,6 +2530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 1
+  currentTile: {fileID: 0}
 --- !u!114 &1247974890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2648,6 +2667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 1
+  currentTile: {fileID: 0}
 --- !u!114 &1291578964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2784,6 +2804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 0
+  currentTile: {fileID: 0}
 --- !u!114 &1401544170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2944,6 +2965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ffa5890b6a7a54a9b81ae598f7ca02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTile: {fileID: 0}
 --- !u!61 &1403068859
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2983,6 +3005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 1
+  currentTile: {fileID: 0}
 --- !u!1 &1426413575
 GameObject:
   m_ObjectHideFlags: 0
@@ -3056,6 +3079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 0
+  currentTile: {fileID: 0}
 --- !u!114 &1426413579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3192,6 +3216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 0
+  currentTile: {fileID: 0}
 --- !u!114 &1437505710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3391,6 +3416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 1
+  currentTile: {fileID: 0}
 --- !u!1 &1580836110
 GameObject:
   m_ObjectHideFlags: 0
@@ -3464,6 +3490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 1
+  currentTile: {fileID: 0}
 --- !u!114 &1580836114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3600,6 +3627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 1
+  currentTile: {fileID: 0}
 --- !u!114 &1600543037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3845,6 +3873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 0
+  currentTile: {fileID: 0}
 --- !u!1 &1893537096
 GameObject:
   m_ObjectHideFlags: 0
@@ -3918,6 +3947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 0
+  currentTile: {fileID: 0}
 --- !u!114 &1893537100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4117,6 +4147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 0
+  currentTile: {fileID: 0}
 --- !u!1 &1945850298
 GameObject:
   m_ObjectHideFlags: 0
@@ -4190,6 +4221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 1
+  currentTile: {fileID: 0}
 --- !u!114 &1945850302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4326,6 +4358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 1
+  currentTile: {fileID: 0}
 --- !u!114 &1996434026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4462,6 +4495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 0
+  currentTile: {fileID: 0}
 --- !u!114 &2046113267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4598,6 +4632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 0
+  currentTile: {fileID: 0}
 --- !u!114 &2064340817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4797,3 +4832,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   white: 0
+  currentTile: {fileID: 0}

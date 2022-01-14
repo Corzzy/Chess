@@ -7,10 +7,16 @@ public class ChessPeice : MonoBehaviour
     SpriteRenderer renderer;
     BoxCollider2D collider;
 
+    Grid grid;
+
+    [HideInInspector] public GameObject currentTile;
+    GameObject[] moves;
+
     private void Start()
     {
         renderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<BoxCollider2D>();
+        grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<Grid>();
     }
 
     private void Update()
@@ -48,7 +54,7 @@ public class ChessPeice : MonoBehaviour
     private void OnMouseUp()
     {
         renderer.color = new Color32(255, 255, 255, 255);
-        transform.position = Grid.SnapOnGrid(Input.mousePosition);
+        transform.position = grid.SnapOnGrid(Input.mousePosition);
 
         Board.NextTurn();
     }

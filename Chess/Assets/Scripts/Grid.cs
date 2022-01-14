@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
-    static readonly float[] coords = { -3.5f, -2.5f, -1.5f, -0.5f, 0.5f, 1.5f, 2.5f, 3.5f };
-
     public GameObject tilePrefab;
     public int gridSize = 64;
     public double maxBound = 3.5;
@@ -19,13 +17,16 @@ public class Grid : MonoBehaviour
     {
         GameObject[] tiles = new GameObject[size];
         int index = 0;
-        for(double x = maxBound; x >= minBound; x -= 1f)
+        for(double y = maxBound; y >= minBound; y -= 1f)
         {
-            for(double y = maxBound; y >= minBound; y -= 1f)
+            for(double x = maxBound; x >= minBound; x -= 1f)
             {
                 GameObject tile = Instantiate(tilePrefab, new Vector3((float)x, (float)y, 0f), Quaternion.identity, transform);
                 tiles[index] = tile;
+
                 tile.GetComponent<Tile>().index = index;
+                tile.GetComponent<SpriteRenderer>().enabled = false;
+
                 index++;
             }
         }
@@ -33,37 +34,30 @@ public class Grid : MonoBehaviour
         return tiles;
     }
 
-    public static Vector2 SnapOnGrid(Vector3 mousePosition)
-    {
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+    public Vector2 SnapOnGrid(Vector3 mousePos)
+	{
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
 
-        float closestX = 0, closestY = 0;
-        float oldDistanceX = 2, oldDistanceY = 2;
+        Transform closestTile = FindClosestTile(worldPos);
 
-        for(int x = 0; x < coords.Length; x++)
-        {
-            float newDistance = Mathf.Abs(worldPosition.x - coords[x]);
+        return closestTile.position;
+	}
 
-            if(oldDistanceX > newDistance)
-            {
-                closestX = coords[x];
-                oldDistanceX = newDistance;
-            }
-        }
+    Transform FindClosestTile(Vector3 worldPos)
+	{
+        float closestDistance = 10f, oldDistance;
+        int index = 0;
+        for(int i = 0; i < tileSet.Length; i++)
+		{
+            oldDistance = Vector2.Distance(tileSet[i].transform.position, worldPos);
 
-        for (int y = 0; y < coords.Length; y++)
-        {
-            float newDistance = Mathf.Abs(worldPosition.y - coords[y]);
-
-            if (oldDistanceY > newDistance)
-            {
-                closestY = coords[y];
-                oldDistanceY = newDistance;
-            }
-        }
-
-        return new Vector2(closestX, closestY);
-    }
-
+            if(oldDistance < closestDistance)
+			{
+                closestDistance = oldDistance;
+                index = i;
+			}
+		}
+        return tileSet[index].transform;
+	}
     
 }
