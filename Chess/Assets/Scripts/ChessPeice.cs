@@ -13,7 +13,7 @@ public class ChessPeice : MonoBehaviour
     int[] horseBehavior = { -17, -15, -6, 10, 17, 15, 6, -10 };
 
     [Header("Peice")]
-    [SerializeField] bool white;
+    public bool white;
     public Peice peice;
     public int startingTileIndex;
 
@@ -38,6 +38,7 @@ public class ChessPeice : MonoBehaviour
         if(currentTile == null)
         {
             currentTile = grid.tileSet[startingTileIndex];
+            currentTile.GetComponent<Tile>().occupant = this;
         }
 
         if(white && Board.turn == Turn.Blackturn || !white && Board.turn == Turn.Whiteturn)
@@ -71,19 +72,49 @@ public class ChessPeice : MonoBehaviour
 
         snappedTile = grid.SnapOnGrid(Input.mousePosition);
 
-        Debug.Log(currentTile.transform.position.ToString() + "\n" + snappedTile.transform.position.ToString());
         if (snappedTile == currentTile)
         {
-            Debug.Log("True");
             transform.position = currentTile.transform.position;
         }
         else
         {
-            Debug.Log("false");
-            currentTile = snappedTile;
-            transform.position = currentTile.transform.position;
+            Tile tile = snappedTile.GetComponent<Tile>();
+
+            if(tile.CheckEnemy(this) == true)
+            {
+                Debug.Log("take");
+                TakePeice(tile.occupant);
+            }
+            else if(tile.CheckEnemy(this) == false)
+            {
+                Debug.Log("Friendly");
+                SnapBack();
+            }
+            else
+            {
+                Debug.Log("Empty");
+                tile.occupant = this;
+                Snap(snappedTile);
+            }
 
             Board.NextTurn();
         }
+    }
+
+    void TakePeice(ChessPeice peice)
+    {
+        Destroy(peice.gameObject);
+        
+    }
+
+    void Snap(GameObject tile)
+    {
+        currentTile = tile;
+        transform.position = currentTile.transform.position;
+    }
+
+    void SnapBack()
+    {
+        transform.position = currentTile.transform.position;
     }
 }
