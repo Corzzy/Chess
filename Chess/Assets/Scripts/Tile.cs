@@ -1,20 +1,18 @@
 using UnityEngine;
 
+public enum Occupants { friendly, enemy, clear }
 public class Tile : MonoBehaviour
 {
-    [HideInInspector] public ChessPeice occupant;
+    [HideInInspector] public GameObject occupant;
     [HideInInspector] public int index;
 
+    Color active;
     public Color clear;
     public Color friendly;
     public Color enemy;
 
-    public bool CheckEnemy(ChessPeice attacker)
+    private void FixedUpdate()
     {
-        if(attacker.white == occupant.white)
-        {
-            return false;
-        }
-        return true;
+        gameObject.GetComponent<SpriteRenderer>().color = active;
     }
 }

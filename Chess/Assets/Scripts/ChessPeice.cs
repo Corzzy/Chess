@@ -5,12 +5,12 @@ public enum Peice { Rook, Queen, Pawn, Knight, King, Horse}
 public class ChessPeice : MonoBehaviour
 {
     //Peice Behavior offsets
-    int[] rookBehavior = { -8, 1, 8, -1 };
-    int[] queenBehavior = { -9, -8, -7, 1, 9, 8, 7, -1 };
-    int[] pawnBehavior = { -9, -8, -7, 9, 8, 7 };
-    int[] knightBehavior = { -9, -7, 7, 9 };
-    int[] kingBehavior = { -9, -8, -7, 1, 9, 8, 7, -1 };
-    int[] horseBehavior = { -17, -15, -6, 10, 17, 15, 6, -10 };
+    readonly int[] rookBehavior = { -8, 1, 8, -1 };
+    readonly int[] queenBehavior = { -9, -8, -7, 1, 9, 8, 7, -1 };
+    readonly int[] pawnBehavior = { -9, -8, -7, 9, 8, 7 };
+    readonly int[] knightBehavior = { -9, -7, 7, 9 };
+    readonly int[] kingBehavior = { -9, -8, -7, 1, 9, 8, 7, -1 };
+    readonly int[] horseBehavior = { -17, -15, -6, 10, 17, 15, 6, -10 };
 
     [Header("Peice")]
     public bool white;
@@ -38,9 +38,10 @@ public class ChessPeice : MonoBehaviour
         if(currentTile == null)
         {
             currentTile = grid.tileSet[startingTileIndex];
-            currentTile.GetComponent<Tile>().occupant = this;
         }
 
+
+        //Control colliders of peice sets based on turn
         if(white && Board.turn == Turn.Blackturn || !white && Board.turn == Turn.Whiteturn)
         {
             collider.enabled = false;
@@ -55,6 +56,34 @@ public class ChessPeice : MonoBehaviour
     {
         renderer.color = new Color32(255, 255, 255, 120);
 
+        int[] behavior;
+
+        switch(peice)
+        {
+            case Peice.Rook:
+                behavior = rookBehavior;
+                break;
+            case Peice.Queen:
+                behavior = queenBehavior;
+                break;
+            case Peice.Pawn:
+                behavior = pawnBehavior;
+                break;
+            case Peice.Knight:
+                behavior = kingBehavior;
+                break;
+            case Peice.King:
+                behavior = kingBehavior;
+                break;
+            case Peice.Horse:
+                behavior = horseBehavior;
+                break;
+            default:
+                behavior = null;
+                break;
+        }
+        moves = CalculateMoves(behavior);
+        HighlightMoves();
     }
 
     private void OnMouseDrag()
@@ -65,11 +94,10 @@ public class ChessPeice : MonoBehaviour
     }
     private void OnMouseUp()
     {
-        GameObject snappedTile;
-
         renderer.color = new Color32(255, 255, 255, 255);
-        
 
+        GameObject snappedTile;
+        
         snappedTile = grid.SnapOnGrid(Input.mousePosition);
 
         if (snappedTile == currentTile)
@@ -78,43 +106,23 @@ public class ChessPeice : MonoBehaviour
         }
         else
         {
-            Tile tile = snappedTile.GetComponent<Tile>();
-
-            if(tile.CheckEnemy(this) == true)
-            {
-                Debug.Log("take");
-                TakePeice(tile.occupant);
-            }
-            else if(tile.CheckEnemy(this) == false)
-            {
-                Debug.Log("Friendly");
-                SnapBack();
-            }
-            else
-            {
-                Debug.Log("Empty");
-                tile.occupant = this;
-                Snap(snappedTile);
-            }
+            currentTile = snappedTile;
+            transform.position = currentTile.transform.position;
 
             Board.NextTurn();
         }
     }
 
-    void TakePeice(ChessPeice peice)
+    GameObject[] CalculateMoves(int[] behavior)
     {
-        Destroy(peice.gameObject);
-        
+        return moves;
     }
 
-    void Snap(GameObject tile)
+    void HighlightMoves()
     {
-        currentTile = tile;
-        transform.position = currentTile.transform.position;
-    }
-
-    void SnapBack()
-    {
-        transform.position = currentTile.transform.position;
+        foreach(GameObject tile in moves)
+        {
+            tile.GetComponent<Tile>();
+        }
     }
 }
