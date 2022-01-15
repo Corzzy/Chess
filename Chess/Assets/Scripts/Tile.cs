@@ -11,7 +11,23 @@ public class Tile : MonoBehaviour
     public Color friendly;
     public Color enemy;
 
-    private void FixedUpdate()
+    public void SetTileColor(Occupants occupant)
+	{
+        switch(occupant)
+		{
+            case Occupants.clear:
+                active = clear;
+                break;
+            case Occupants.enemy:
+                active = enemy;
+                break;
+            case Occupants.friendly:
+                active = friendly;
+                break;
+		}
+        UpdateColor();
+	}
+    void UpdateColor()
     {
         gameObject.GetComponent<SpriteRenderer>().color = active;
     }
