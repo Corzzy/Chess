@@ -8,7 +8,8 @@ public class ChessPeice : MonoBehaviour
     //Peice Behavior offsets
     readonly int[] rookBehavior = { -8, 1, 8, -1 };
     readonly int[] queenBehavior = { -9, -8, -7, 1, 9, 8, 7, -1 };
-    readonly int[] pawnBehavior = { -9, -8, -7, 9, 8, 7 };
+    readonly int[] blackPawnBehavior = { 9, 8, 7 };
+    readonly int[] whitePawnBehavior = { -9, -8, -7 };
     readonly int[] knightBehavior = { -9, -7, 7, 9 };
     readonly int[] kingBehavior = { -9, -8, -7, 1, 9, 8, 7, -1 };
     readonly int[] horseBehavior = { -17, -15, -6, 10, 17, 15, 6, -10 };
@@ -32,7 +33,8 @@ public class ChessPeice : MonoBehaviour
     //Highlight Moves and current position
     Grid grid;
     GameObject currentTile;
-    List<GameObject> moves = new List<GameObject>();
+    List<GameObject> legalMoves = new List<GameObject>();
+    List<GameObject> possibleMoves = new List<GameObject>();
 
     private void Start()
     {
@@ -79,7 +81,14 @@ public class ChessPeice : MonoBehaviour
                 repeat = queenRepeat;
                 break;
             case Peice.Pawn:
-                behavior = pawnBehavior;
+                if(white)
+				{
+                    behavior = whitePawnBehavior;
+				}
+                else
+				{
+                    behavior = blackPawnBehavior;
+                }
                 repeat = pawnRepeat;
                 break;
             case Peice.Knight:
@@ -99,7 +108,7 @@ public class ChessPeice : MonoBehaviour
                 repeat = 0;
                 break;
         }
-        moves = CalculateMoves(behavior, repeat);
+        CalculateMoves(behavior, repeat);
         HighlightMoves();
     }
 
@@ -124,14 +133,22 @@ public class ChessPeice : MonoBehaviour
         }
         else
         {
-            if(moves.Contains(snappedTile) && IsEnemy(snappedTile))
+            if(legalMoves.Contains(snappedTile))
 			{
                 currentTile.GetComponent<Tile>().occupant = null;
+
+                if(snappedTile.GetComponent<Tile>().occupant != null)
+				{
+                    Destroy(snappedTile.GetComponent<Tile>().occupant);
+				}
+
                 currentTile = snappedTile;
                 transform.position = currentTile.transform.position;
                 currentTile.GetComponent<Tile>().occupant = gameObject;
 
                 UnHighlightMoves();
+                possibleMoves.Clear();
+                legalMoves.Clear();
                 Board.NextTurn();
             }
             else
@@ -142,36 +159,110 @@ public class ChessPeice : MonoBehaviour
         }
     }
 
-    List<GameObject> CalculateMoves(int[] behavior, int repeatTotal)
+    void CalculateMoves(int[] behavior, int repeatTotal)
     {
-        List<GameObject> possibleMoves = new List<GameObject>();
+        int oneDimensionalIndex = currentTile.GetComponent<Tile>().index % 8;
 
-        for(int offset = 0; offset < behavior.Length; offset++)
-		{
+        int[] bounds = MapBounds(oneDimensionalIndex);
+
+        for (int offset = 0; offset < behavior.Length; offset++)
+        {
             GameObject tileObject;
             bool nextClear = true;
             int repeats = 1;
 
+            //Check if move teleports throught the grid
+            if (peice == Peice.Knight || peice == Peice.Queen || peice == Peice.Rook)
+            {
+                if (Mathf.Abs(behavior[offset]) != 8)
+                {
+                    switch (behavior[offset])
+                    {
+                        case -9:
+                            repeatTotal = bounds[0];
+                            break;
+                        case -7:
+                            repeatTotal = bounds[1];
+                            break;
+                        case 1:
+                            repeatTotal = bounds[1];
+                            break;
+                        case 9:
+                            repeatTotal = bounds[1];
+                            break;
+                        case 7:
+                            repeatTotal = bounds[0];
+                            break;
+                        case -1:
+                            repeatTotal = bounds[0];
+                            break;
+                    }
+                } 
+            }
+            if (peice == Peice.Pawn)
+            {
+                if (bounds[0] == 0)
+                {
+                    if (behavior[offset] == -9 || behavior[offset] == 7)
+                    {
+                        continue;
+                    }
+                }
+                if(bounds[1] == 0)
+				{
+                    if (behavior[offset] == -7 || behavior[offset] == 9)
+                    {
+                        continue;
+                    }
+                }
+            }
+
             while (repeats <= repeatTotal && nextClear)
             {
-                if(currentTile.GetComponent<Tile>().index + behavior[offset] * repeats > grid.tileSet.Length)
+                int gridNum = currentTile.GetComponent<Tile>().index + (behavior[offset] * repeats);
+
+                //Check if move is within the grid
+                if (gridNum >= grid.tileSet.Length || gridNum < 0)
 				{
                     break;
 				}
-                tileObject = grid.tileSet[currentTile.GetComponent<Tile>().index + behavior[offset] * repeats];
+
+                tileObject = grid.tileSet[gridNum];
 
                 Tile tile = tileObject.GetComponent<Tile>();
                 
                 if(tile.occupant == null)
 				{
-                    possibleMoves.Add(tileObject);
-                    tile.SetTileColor(Occupants.clear);
+                    if(peice != Peice.Pawn)
+					{
+                        possibleMoves.Add(tileObject);
+                        legalMoves.Add(tileObject);
+                        tile.SetTileColor(Occupants.clear);
+                    } 
+                    else if(Mathf.Abs(behavior[offset]) != 9 && Mathf.Abs(behavior[offset]) != 7)
+					{
+                        possibleMoves.Add(tileObject);
+                        legalMoves.Add(tileObject);
+                        tile.SetTileColor(Occupants.clear);
+                    }
 				}
                 else if(IsEnemy(tile.occupant))
 				{
-                    possibleMoves.Add(tileObject);
-                    tile.SetTileColor(Occupants.enemy);
-                    nextClear = false;
+                    if (peice != Peice.Pawn)
+                    {
+                        possibleMoves.Add(tileObject);
+                        legalMoves.Add(tileObject);
+                        tile.SetTileColor(Occupants.enemy);
+                        nextClear = false;
+                    }
+                    else if (Mathf.Abs(behavior[offset]) == 9 || Mathf.Abs(behavior[offset]) == 7)
+                    {
+                        possibleMoves.Add(tileObject);
+                        legalMoves.Add(tileObject);
+                        tile.SetTileColor(Occupants.enemy);
+                        nextClear = false;
+                    }
+                    
 				}
                 else
 				{
@@ -183,23 +274,32 @@ public class ChessPeice : MonoBehaviour
 			}
             
 		}
-        return possibleMoves;
         
     }
+
+    int[] MapBounds(int index)
+	{
+        int[] bounds = new int[2];
+
+        bounds[0] = index;
+        bounds[1] = Mathf.Abs(index - 7);
+
+        return bounds;
+	} 
 
     bool IsEnemy(GameObject peice)
 	{
         bool otherWhite = peice.GetComponent<ChessPeice>().white;
         if(otherWhite && white || !otherWhite && !white)
 		{
-            return true;
+            return false;
 		}
-        return false;
+        return true;
 	}
 
     void HighlightMoves()
     {
-        foreach(GameObject tile in moves)
+        foreach(GameObject tile in possibleMoves)
         {
             tile.GetComponent<SpriteRenderer>().enabled = true;
         }
@@ -207,7 +307,7 @@ public class ChessPeice : MonoBehaviour
 
     void UnHighlightMoves()
 	{
-        foreach (GameObject tile in moves)
+        foreach (GameObject tile in possibleMoves)
         {
             tile.GetComponent<SpriteRenderer>().enabled = false;
         }

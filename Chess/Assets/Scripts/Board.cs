@@ -19,6 +19,7 @@ public class Board : MonoBehaviour
     private void Start()
     {
         turn = Turn.Whiteturn;
+        Camera.main.backgroundColor = Color.white;
 
         localWidth = worldWidth / size;
         localHeight = worldHeight / size;
@@ -31,10 +32,12 @@ public class Board : MonoBehaviour
         if(turn == Turn.Whiteturn)
         {
             turn = Turn.Blackturn;
+            Camera.main.backgroundColor = Color.black;
         }
         else
         {
             turn = Turn.Whiteturn;
+            Camera.main.backgroundColor = Color.white;
         }
     }
 
