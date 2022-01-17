@@ -14,12 +14,21 @@ public class ChessPeice : MonoBehaviour
     readonly int[] kingBehavior = { -9, -8, -7, 1, 9, 8, 7, -1 };
     readonly int[] horseBehavior = { -17, -15, -6, 10, 17, 15, 6, -10 };
 
-    readonly int rookRepeat = 8;
-    readonly int queenRepeat = 8;
-    readonly int pawnRepeat = 1;
-    readonly int knightRepeat = 8;
-    readonly int kingRepeat = 1;
-    readonly int horseRepeat = 1;
+    const int rookRepeat = 8;
+    const int queenRepeat = 8;
+    const int pawnRepeat = 1;
+    const int knightRepeat = 8;
+    const int kingRepeat = 1;
+    const int horseRepeat = 1;
+
+    /*
+     * Peice specific variables
+     */
+    bool pawnMoved;
+    const int pawnDoubleRepeat = 2;
+
+    const int horseMaxMove = 2;
+
 
     [Header("Peice")]
     public bool white;
@@ -38,6 +47,8 @@ public class ChessPeice : MonoBehaviour
 
     private void Start()
     {
+        pawnMoved = false;
+
         renderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<BoxCollider2D>();
         grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<Grid>();
@@ -159,7 +170,7 @@ public class ChessPeice : MonoBehaviour
         }
     }
 
-    void CalculateMoves(int[] behavior, int repeatTotal)
+    void CalculateMoves(int[] behavior, int maxRepeatTotal)
     {
         int oneDimensionalIndex = currentTile.GetComponent<Tile>().index % 8;
 
@@ -170,11 +181,16 @@ public class ChessPeice : MonoBehaviour
             GameObject tileObject;
             bool nextClear = true;
             int repeats = 1;
+            int repeatTotal = maxRepeatTotal;
 
-            //Check if move teleports throught the grid
+            /*
+             * Binding peices behaviors
+             */
+
+            //Prevents peice from going across the screen
             if (peice == Peice.Knight || peice == Peice.Queen || peice == Peice.Rook)
             {
-                if (Mathf.Abs(behavior[offset]) != 8)
+                if (!EqualsOffsets(behavior[offset], new int[] { -8, 8}))
                 {
                     switch (behavior[offset])
                     {
@@ -197,30 +213,59 @@ public class ChessPeice : MonoBehaviour
                             repeatTotal = bounds[0];
                             break;
                     }
-                } 
+                }
             }
+
+            //Pawn behavior restrictions
             if (peice == Peice.Pawn)
             {
+                //Prevent pawns from going across the screen
                 if (bounds[0] == 0)
                 {
-                    if (behavior[offset] == -9 || behavior[offset] == 7)
+                    if (EqualsOffsets(behavior[offset], new int[] { -9, 7 })/*behavior[offset] == -9 || behavior[offset] == 7*/)
                     {
                         continue;
                     }
                 }
                 if(bounds[1] == 0)
 				{
-                    if (behavior[offset] == -7 || behavior[offset] == 9)
+                    if (EqualsOffsets(behavior[offset], new int[] { -7, 9 })/*behavior[offset] == -7 || behavior[offset] == 9*/)
                     {
                         continue;
                     }
                 }
+
+                //Pawn double move in the begining
+                if(startingTileIndex == currentTile.GetComponent<Tile>().index && !pawnMoved)
+				{
+                    if(EqualsOffsets(behavior[offset], new int[] { -8, 8 }))
+					{
+                        repeatTotal = pawnDoubleRepeat;
+					}
+				}
             }
+
+            //House behavior restrictions
+            if(peice == Peice.Horse)
+			{
+                if(EqualsOffsets(behavior[offset], new int[] { -10, 10, - 6, 6 }))
+				{
+                    if (bounds[0] < horseMaxMove)
+                    {
+                        continue;
+                    }
+                    if (bounds[1] < horseMaxMove)
+                    {
+                        continue;
+                    }
+                }
+			}
 
             while (repeats <= repeatTotal && nextClear)
             {
+                
                 int gridNum = currentTile.GetComponent<Tile>().index + (behavior[offset] * repeats);
-
+                
                 //Check if move is within the grid
                 if (gridNum >= grid.tileSet.Length || gridNum < 0)
 				{
@@ -239,7 +284,7 @@ public class ChessPeice : MonoBehaviour
                         legalMoves.Add(tileObject);
                         tile.SetTileColor(Occupants.clear);
                     } 
-                    else if(Mathf.Abs(behavior[offset]) != 9 && Mathf.Abs(behavior[offset]) != 7)
+                    else if(EqualsOffsets(behavior[offset], new int[] { -8, 8 }))
 					{
                         possibleMoves.Add(tileObject);
                         legalMoves.Add(tileObject);
@@ -255,14 +300,16 @@ public class ChessPeice : MonoBehaviour
                         tile.SetTileColor(Occupants.enemy);
                         nextClear = false;
                     }
-                    else if (Mathf.Abs(behavior[offset]) == 9 || Mathf.Abs(behavior[offset]) == 7)
-                    {
-                        possibleMoves.Add(tileObject);
-                        legalMoves.Add(tileObject);
-                        tile.SetTileColor(Occupants.enemy);
-                        nextClear = false;
+                    else
+					{
+                        if (!EqualsOffsets(behavior[offset], new int[] { -8, 8 }))
+                        {
+                            possibleMoves.Add(tileObject);
+                            legalMoves.Add(tileObject);
+                            tile.SetTileColor(Occupants.enemy);
+                            nextClear = false;
+                        }
                     }
-                    
 				}
                 else
 				{
@@ -276,6 +323,18 @@ public class ChessPeice : MonoBehaviour
 		}
         
     }
+
+    bool EqualsOffsets(int offset, int[] check)
+	{
+        foreach(int possibleOffset in check)
+		{
+            if(possibleOffset == offset)
+			{
+                return true;
+			}
+		}
+        return false;
+	}
 
     int[] MapBounds(int index)
 	{
