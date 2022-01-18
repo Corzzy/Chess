@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 109265194}
   m_Layer: 0
   m_Name: BlackRook (1)
-  m_TagString: Untagged
+  m_TagString: BlackPeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -312,6 +312,7 @@ MonoBehaviour:
   white: 0
   peice: 0
   startingTileIndex: 7
+  graveyard: {fileID: 1651129390}
 --- !u!212 &109265197
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -578,7 +579,7 @@ GameObject:
   - component: {fileID: 336694235}
   m_Layer: 0
   m_Name: WhiteQueen
-  m_TagString: Untagged
+  m_TagString: WhitePeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -689,6 +690,7 @@ MonoBehaviour:
   white: 1
   peice: 1
   startingTileIndex: 59
+  graveyard: {fileID: 1651129390}
 --- !u!1 &341399922
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,7 +705,7 @@ GameObject:
   - component: {fileID: 341399924}
   m_Layer: 0
   m_Name: BlackPawn (4)
-  m_TagString: Untagged
+  m_TagString: BlackPeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -763,6 +765,7 @@ MonoBehaviour:
   white: 0
   peice: 2
   startingTileIndex: 12
+  graveyard: {fileID: 1651129390}
 --- !u!212 &341399927
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -895,7 +898,7 @@ GameObject:
   - component: {fileID: 348504853}
   m_Layer: 0
   m_Name: BlackPawn (3)
-  m_TagString: Untagged
+  m_TagString: BlackPeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -955,6 +958,7 @@ MonoBehaviour:
   white: 0
   peice: 2
   startingTileIndex: 11
+  graveyard: {fileID: 1651129390}
 --- !u!212 &348504856
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1066,7 +1070,7 @@ GameObject:
   - component: {fileID: 426830925}
   m_Layer: 0
   m_Name: WhiteRook
-  m_TagString: Untagged
+  m_TagString: WhitePeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1177,6 +1181,7 @@ MonoBehaviour:
   white: 1
   peice: 0
   startingTileIndex: 56
+  graveyard: {fileID: 1651129390}
 --- !u!1 &441013311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,7 +1196,7 @@ GameObject:
   - component: {fileID: 441013315}
   m_Layer: 0
   m_Name: WhiteKing
-  m_TagString: Untagged
+  m_TagString: WhitePeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1302,6 +1307,7 @@ MonoBehaviour:
   white: 1
   peice: 4
   startingTileIndex: 60
+  graveyard: {fileID: 1651129390}
 --- !u!1 &464281721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1316,7 +1322,7 @@ GameObject:
   - component: {fileID: 464281723}
   m_Layer: 0
   m_Name: WhitePawn (6)
-  m_TagString: Untagged
+  m_TagString: WhitePeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1376,6 +1382,7 @@ MonoBehaviour:
   white: 1
   peice: 2
   startingTileIndex: 54
+  graveyard: {fileID: 1651129390}
 --- !u!212 &464281726
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1441,7 +1448,7 @@ GameObject:
   - component: {fileID: 499868356}
   m_Layer: 0
   m_Name: BlackHorse
-  m_TagString: Untagged
+  m_TagString: BlackPeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1552,6 +1559,7 @@ MonoBehaviour:
   white: 0
   peice: 5
   startingTileIndex: 1
+  graveyard: {fileID: 1651129390}
 --- !u!1001 &505347313
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1984,7 +1992,7 @@ GameObject:
   - component: {fileID: 740325538}
   m_Layer: 0
   m_Name: BlackRook
-  m_TagString: Untagged
+  m_TagString: BlackPeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2095,6 +2103,7 @@ MonoBehaviour:
   white: 0
   peice: 0
   startingTileIndex: 0
+  graveyard: {fileID: 1651129390}
 --- !u!1001 &770039391
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2194,8 +2203,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 8
-  worldWidth: 256
-  worldHeight: 256
+  worldWidth: 512
+  worldHeight: 512
   colorOdd: {r: 0.54509807, g: 0.27058825, b: 0.07450981, a: 0}
   colorEven: {r: 0.95686275, g: 0.6431373, b: 0.3764706, a: 0}
 --- !u!23 &863515723
@@ -2257,7 +2266,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 8, y: 8, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1880826829}
+  - {fileID: 955355371}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2275,7 +2286,7 @@ GameObject:
   - component: {fileID: 912538960}
   m_Layer: 0
   m_Name: WhitePawn (3)
-  m_TagString: Untagged
+  m_TagString: WhitePeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2335,6 +2346,7 @@ MonoBehaviour:
   white: 1
   peice: 2
   startingTileIndex: 51
+  graveyard: {fileID: 1651129390}
 --- !u!212 &912538963
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2400,7 +2412,7 @@ GameObject:
   - component: {fileID: 940178851}
   m_Layer: 0
   m_Name: BlackHorse (1)
-  m_TagString: Untagged
+  m_TagString: BlackPeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2460,6 +2472,7 @@ MonoBehaviour:
   white: 0
   peice: 5
   startingTileIndex: 6
+  graveyard: {fileID: 1651129390}
 --- !u!212 &940178854
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2511,6 +2524,88 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &955355369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 955355371}
+  - component: {fileID: 955355370}
+  m_Layer: 0
+  m_Name: TurnBackground
+  m_TagString: Turn
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &955355370
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955355369}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &955355371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955355369}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1.03125, y: 1.03125, z: 1}
+  m_Children: []
+  m_Father: {fileID: 863515725}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &958947941
 GameObject:
   m_ObjectHideFlags: 0
@@ -2525,7 +2620,7 @@ GameObject:
   - component: {fileID: 958947945}
   m_Layer: 0
   m_Name: BlackKnight
-  m_TagString: Untagged
+  m_TagString: BlackPeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2636,6 +2731,7 @@ MonoBehaviour:
   white: 0
   peice: 3
   startingTileIndex: 2
+  graveyard: {fileID: 1651129390}
 --- !u!1001 &962612534
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2985,7 +3081,7 @@ GameObject:
   - component: {fileID: 1051343688}
   m_Layer: 0
   m_Name: WhiteHorse (1)
-  m_TagString: Untagged
+  m_TagString: WhitePeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3045,6 +3141,7 @@ MonoBehaviour:
   white: 1
   peice: 5
   startingTileIndex: 62
+  graveyard: {fileID: 1651129390}
 --- !u!212 &1051343691
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3177,7 +3274,7 @@ GameObject:
   - component: {fileID: 1088686387}
   m_Layer: 0
   m_Name: WhiteKnight
-  m_TagString: Untagged
+  m_TagString: WhitePeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3288,6 +3385,7 @@ MonoBehaviour:
   white: 1
   peice: 3
   startingTileIndex: 58
+  graveyard: {fileID: 1651129390}
 --- !u!1001 &1156286738
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3369,7 +3467,7 @@ GameObject:
   - component: {fileID: 1243391208}
   m_Layer: 0
   m_Name: WhitePawn (4)
-  m_TagString: Untagged
+  m_TagString: WhitePeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3429,6 +3527,7 @@ MonoBehaviour:
   white: 1
   peice: 2
   startingTileIndex: 52
+  graveyard: {fileID: 1651129390}
 --- !u!212 &1243391211
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3494,7 +3593,7 @@ GameObject:
   - component: {fileID: 1247974888}
   m_Layer: 0
   m_Name: WhiteRook (1)
-  m_TagString: Untagged
+  m_TagString: WhitePeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3554,6 +3653,7 @@ MonoBehaviour:
   white: 1
   peice: 0
   startingTileIndex: 63
+  graveyard: {fileID: 1651129390}
 --- !u!212 &1247974891
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3619,7 +3719,7 @@ GameObject:
   - component: {fileID: 1291578962}
   m_Layer: 0
   m_Name: WhiteKnight (1)
-  m_TagString: Untagged
+  m_TagString: WhitePeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3679,6 +3779,7 @@ MonoBehaviour:
   white: 1
   peice: 3
   startingTileIndex: 61
+  graveyard: {fileID: 1651129390}
 --- !u!212 &1291578965
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3811,7 +3912,7 @@ GameObject:
   - component: {fileID: 1401544168}
   m_Layer: 0
   m_Name: BlackPawn (6)
-  m_TagString: Untagged
+  m_TagString: BlackPeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3871,6 +3972,7 @@ MonoBehaviour:
   white: 0
   peice: 2
   startingTileIndex: 14
+  graveyard: {fileID: 1651129390}
 --- !u!212 &1401544171
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3936,7 +4038,7 @@ GameObject:
   - component: {fileID: 1403068859}
   m_Layer: 0
   m_Name: WhiteHorse
-  m_TagString: Untagged
+  m_TagString: WhitePeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4047,6 +4149,7 @@ MonoBehaviour:
   white: 1
   peice: 5
   startingTileIndex: 57
+  graveyard: {fileID: 1651129390}
 --- !u!1001 &1409838945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4128,7 +4231,7 @@ GameObject:
   - component: {fileID: 1426413577}
   m_Layer: 0
   m_Name: BlackKnight (1)
-  m_TagString: Untagged
+  m_TagString: BlackPeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4188,6 +4291,7 @@ MonoBehaviour:
   white: 0
   peice: 3
   startingTileIndex: 5
+  graveyard: {fileID: 1651129390}
 --- !u!212 &1426413580
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4253,7 +4357,7 @@ GameObject:
   - component: {fileID: 1437505708}
   m_Layer: 0
   m_Name: BlackPawn (2)
-  m_TagString: Untagged
+  m_TagString: BlackPeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4313,6 +4417,7 @@ MonoBehaviour:
   white: 0
   peice: 2
   startingTileIndex: 10
+  graveyard: {fileID: 1651129390}
 --- !u!212 &1437505711
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4579,7 +4684,7 @@ GameObject:
   - component: {fileID: 1561863067}
   m_Layer: 0
   m_Name: WhitePawn
-  m_TagString: Untagged
+  m_TagString: WhitePeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4690,6 +4795,7 @@ MonoBehaviour:
   white: 1
   peice: 2
   startingTileIndex: 48
+  graveyard: {fileID: 1651129390}
 --- !u!1001 &1570263047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4771,7 +4877,7 @@ GameObject:
   - component: {fileID: 1580836112}
   m_Layer: 0
   m_Name: WhitePawn (5)
-  m_TagString: Untagged
+  m_TagString: WhitePeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4831,6 +4937,7 @@ MonoBehaviour:
   white: 1
   peice: 2
   startingTileIndex: 53
+  graveyard: {fileID: 1651129390}
 --- !u!212 &1580836115
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5030,7 +5137,7 @@ GameObject:
   - component: {fileID: 1600543035}
   m_Layer: 0
   m_Name: WhitePawn (7)
-  m_TagString: Untagged
+  m_TagString: WhitePeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5090,6 +5197,7 @@ MonoBehaviour:
   white: 1
   peice: 2
   startingTileIndex: 55
+  graveyard: {fileID: 1651129390}
 --- !u!212 &1600543038
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5322,7 +5430,7 @@ GameObject:
   - component: {fileID: 1765208147}
   m_Layer: 0
   m_Name: BlackKing
-  m_TagString: Untagged
+  m_TagString: BlackPeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5433,6 +5541,7 @@ MonoBehaviour:
   white: 0
   peice: 4
   startingTileIndex: 4
+  graveyard: {fileID: 1651129390}
 --- !u!1001 &1816306912
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5500,6 +5609,88 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2733921152665334433, guid: 56c4b2de7a17cc54b8da03b04b2a9b79, type: 3}
   m_PrefabInstance: {fileID: 1816306912}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1880826827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1880826829}
+  - component: {fileID: 1880826828}
+  m_Layer: 0
+  m_Name: GameBackground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &1880826828
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880826827}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -415538329
+  m_SortingLayer: -1
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: b30f70d8e867f2843878358d959b9587, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 16, y: 12}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1880826829
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880826827}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 0.1458789, y: 0.1125, z: 1}
+  m_Children: []
+  m_Father: {fileID: 863515725}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1893537096
 GameObject:
   m_ObjectHideFlags: 0
@@ -5514,7 +5705,7 @@ GameObject:
   - component: {fileID: 1893537098}
   m_Layer: 0
   m_Name: BlackPawn (1)
-  m_TagString: Untagged
+  m_TagString: BlackPeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5574,6 +5765,7 @@ MonoBehaviour:
   white: 0
   peice: 2
   startingTileIndex: 9
+  graveyard: {fileID: 1651129390}
 --- !u!212 &1893537101
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5639,7 +5831,7 @@ GameObject:
   - component: {fileID: 1899579598}
   m_Layer: 0
   m_Name: BlackPawn
-  m_TagString: Untagged
+  m_TagString: BlackPeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5750,6 +5942,7 @@ MonoBehaviour:
   white: 0
   peice: 2
   startingTileIndex: 8
+  graveyard: {fileID: 1651129390}
 --- !u!1 &1945850298
 GameObject:
   m_ObjectHideFlags: 0
@@ -5764,7 +5957,7 @@ GameObject:
   - component: {fileID: 1945850300}
   m_Layer: 0
   m_Name: WhitePawn (1)
-  m_TagString: Untagged
+  m_TagString: WhitePeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5824,6 +6017,7 @@ MonoBehaviour:
   white: 1
   peice: 2
   startingTileIndex: 49
+  graveyard: {fileID: 1651129390}
 --- !u!212 &1945850303
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5956,7 +6150,7 @@ GameObject:
   - component: {fileID: 1996434024}
   m_Layer: 0
   m_Name: WhitePawn (2)
-  m_TagString: Untagged
+  m_TagString: WhitePeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6016,6 +6210,7 @@ MonoBehaviour:
   white: 1
   peice: 2
   startingTileIndex: 50
+  graveyard: {fileID: 1651129390}
 --- !u!212 &1996434027
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6215,7 +6410,7 @@ GameObject:
   - component: {fileID: 2046113265}
   m_Layer: 0
   m_Name: BlackPawn (7)
-  m_TagString: Untagged
+  m_TagString: BlackPeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6275,6 +6470,7 @@ MonoBehaviour:
   white: 0
   peice: 2
   startingTileIndex: 15
+  graveyard: {fileID: 1651129390}
 --- !u!212 &2046113268
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6407,7 +6603,7 @@ GameObject:
   - component: {fileID: 2064340815}
   m_Layer: 0
   m_Name: BlackPawn (5)
-  m_TagString: Untagged
+  m_TagString: BlackPeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6467,6 +6663,7 @@ MonoBehaviour:
   white: 0
   peice: 2
   startingTileIndex: 13
+  graveyard: {fileID: 1651129390}
 --- !u!212 &2064340818
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6599,7 +6796,7 @@ GameObject:
   - component: {fileID: 2096340178}
   m_Layer: 0
   m_Name: BlackQueen
-  m_TagString: Untagged
+  m_TagString: BlackPeice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6710,3 +6907,4 @@ MonoBehaviour:
   white: 0
   peice: 1
   startingTileIndex: 3
+  graveyard: {fileID: 1651129390}

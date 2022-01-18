@@ -12,14 +12,16 @@ public class Board : MonoBehaviour
     public Color colorOdd;
     public Color colorEven;
 
-    //[Header("TurnSystem")]
+    [Header("TurnSystem")]
     public static Turn turn;
+    public static SpriteRenderer turnRenderer;
     
 
     private void Start()
     {
+        turnRenderer = GameObject.FindGameObjectWithTag("Turn").GetComponent<SpriteRenderer>();
         turn = Turn.Whiteturn;
-        Camera.main.backgroundColor = Color.white;
+        turnRenderer.color = Color.white;
 
         localWidth = worldWidth / size;
         localHeight = worldHeight / size;
@@ -32,12 +34,12 @@ public class Board : MonoBehaviour
         if(turn == Turn.Whiteturn)
         {
             turn = Turn.Blackturn;
-            Camera.main.backgroundColor = Color.black;
+            turnRenderer.color = Color.black;
         }
         else
         {
             turn = Turn.Whiteturn;
-            Camera.main.backgroundColor = Color.white;
+            turnRenderer.color = Color.white;
         }
     }
 

@@ -26,14 +26,15 @@ public class ChessPeice : MonoBehaviour
      */
     bool pawnMoved;
     const int pawnDoubleRepeat = 2;
-
     const int horseMaxMove = 2;
-
 
     [Header("Peice")]
     public bool white;
     public Peice peice;
     public int startingTileIndex;
+
+    [Header("GraveYard")]
+    public GraveyardManager graveyard;
 
     //Peice components
     SpriteRenderer renderer;
@@ -150,7 +151,9 @@ public class ChessPeice : MonoBehaviour
 
                 if(snappedTile.GetComponent<Tile>().occupant != null)
 				{
-                    Destroy(snappedTile.GetComponent<Tile>().occupant);
+                    ChessPeice peice = snappedTile.GetComponent<Tile>().occupant.GetComponent<ChessPeice>();
+                    graveyard.Bury(peice.peice, peice.white);
+                    Destroy(peice.gameObject);
 				}
 
                 currentTile = snappedTile;
