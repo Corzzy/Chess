@@ -339,6 +339,10 @@ public class ChessPeice : MonoBehaviour
                             tile.SetTileColor(Occupants.enemy);
                             nextClear = false;
                         }
+                        else
+                        {
+                            nextClear = false;
+                        }
                     }
 				}
                 else
