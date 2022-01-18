@@ -27,6 +27,7 @@ public class ChessPeice : MonoBehaviour
     bool pawnMoved;
     const int pawnDoubleRepeat = 2;
     const int horseMaxMove = 2;
+    const int horseMinMove = 1;
 
     [Header("Peice")]
     public bool white;
@@ -35,6 +36,9 @@ public class ChessPeice : MonoBehaviour
 
     [Header("GraveYard")]
     public GraveyardManager graveyard;
+
+    //EndState
+    EndStateManager endState;
 
     //Peice components
     SpriteRenderer renderer;
@@ -48,6 +52,7 @@ public class ChessPeice : MonoBehaviour
 
     private void Start()
     {
+        endState = GameObject.Find("EndState").GetComponent<EndStateManager>();
         pawnMoved = false;
 
         renderer = GetComponent<SpriteRenderer>();
@@ -154,6 +159,11 @@ public class ChessPeice : MonoBehaviour
                     ChessPeice peice = snappedTile.GetComponent<Tile>().occupant.GetComponent<ChessPeice>();
                     graveyard.Bury(peice.peice, peice.white);
                     Destroy(peice.gameObject);
+
+                    if(peice.peice == Peice.King)
+                    {
+                        endState.EndGame(peice.white);
+                    }
 				}
 
                 currentTile = snappedTile;
@@ -251,13 +261,30 @@ public class ChessPeice : MonoBehaviour
             //House behavior restrictions
             if(peice == Peice.Horse)
 			{
-                if(EqualsOffsets(behavior[offset], new int[] { -10, 10, - 6, 6 }))
+                if(EqualsOffsets(behavior[offset], new int[] { -10, 6 }))
 				{
                     if (bounds[0] < horseMaxMove)
                     {
                         continue;
                     }
+                }
+                if(EqualsOffsets(behavior[offset], new int[] {10, -6}))
+                {
                     if (bounds[1] < horseMaxMove)
+                    {
+                        continue;
+                    }
+                }
+                if (bounds[0] < horseMinMove)
+                {
+                    if(EqualsOffsets(behavior[offset], new int[] {15, -17}))
+                    {
+                        continue;
+                    }
+                }
+                else if (bounds[1] < horseMinMove)
+                {
+                    if (EqualsOffsets(behavior[offset], new int[] { -15, 17 }))
                     {
                         continue;
                     }
