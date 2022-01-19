@@ -290,6 +290,23 @@ public class ChessPeice : MonoBehaviour
                     }
                 }
 			}
+            if(peice == Peice.King)
+            {
+                if (bounds[0] == 0)
+                {
+                    if (EqualsOffsets(behavior[offset], new int[] { -9, 7, -1})/*behavior[offset] == -9 || behavior[offset] == 7*/)
+                    {
+                        continue;
+                    }
+                }
+                if (bounds[1] == 0)
+                {
+                    if (EqualsOffsets(behavior[offset], new int[] { -7, 9, 1 })/*behavior[offset] == -7 || behavior[offset] == 9*/)
+                    {
+                        continue;
+                    }
+                }
+            }
 
             while (repeats <= repeatTotal && nextClear)
             {
