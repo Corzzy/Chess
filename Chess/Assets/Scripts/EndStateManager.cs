@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class EndStateManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class EndStateManager : MonoBehaviour
 
     [Space]
     public TextMeshProUGUI winText;
-    public TextMeshProUGUI time;
+    public TextMeshProUGUI timeText;
 
     public Button playAgain;
     Text playAgainText;
@@ -19,25 +20,77 @@ public class EndStateManager : MonoBehaviour
     const string blackWin = "Black Wins!";
     const string whiteWin = "White Wins!";
 
+    //Timer
+    string totalTimeText;
+    int minute;
+    int second;
+    bool timer;
+
+    const float targetSecond = 60.0f;
+    float timePast;
+
     private void Start()
     {
         playAgainText = playAgain.GetComponentInChildren<Text>(true);
         quitText = quit.GetComponentInChildren<Text>(true);
 
         canvas.enabled = false;
+        
+        timePast = 0.0f;
+        minute = 0;
+        second = 0;
+        totalTimeText = "";
+
+        StartTimer();
     }
 
-    public void EndGame(bool winner)
+	private void Update()
+	{
+        if(timer)
+		{
+            timePast += Time.deltaTime;
+
+            second = Mathf.FloorToInt(timePast);
+
+            if(timePast >= targetSecond)
+			{
+                minute += 1;
+                timePast = 0;
+			}
+
+            string minuteString = minute.ToString();
+            
+            totalTimeText = minuteString + ":" + LeadingZero(second);
+        }
+	}
+
+	void StartTimer()
+	{
+        timer = true;
+	}
+
+    string LeadingZero(int t)
+	{
+        return t.ToString().PadLeft(2, '0');
+	}
+
+    void EndTimer()
+	{
+        timer = false;
+	}
+
+	public void EndGame(bool winner)
     {
+        EndTimer();
         if (!winner)
         {
             //White wins
             winText.text = whiteWin;
             winText.color = Color.white;
             winText.outlineColor = Color.black;
-            //time.text = Board.Time;
-            time.color = Color.white;
-            time.outlineColor = Color.black;
+            timeText.text = totalTimeText;
+            timeText.color = Color.white;
+            timeText.outlineColor = Color.black;
 
             canvas.enabled = true;
         }
@@ -47,9 +100,9 @@ public class EndStateManager : MonoBehaviour
             winText.text = blackWin;
             winText.color = Color.black;
             winText.outlineColor = Color.white;
-            //time.text = Board.Time;
-            time.color = Color.black;
-            time.outlineColor = Color.white;
+            timeText.text = totalTimeText;
+            timeText.color = Color.black;
+            timeText.outlineColor = Color.white;
 
             canvas.enabled = true;
         }
