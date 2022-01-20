@@ -24,7 +24,6 @@ public class ChessPeice : MonoBehaviour
     /*
      * Peice specific variables
      */
-    bool pawnMoved;
     const int pawnDoubleRepeat = 2;
     const int horseMaxMove = 2;
     const int horseMinMove = 1;
@@ -53,7 +52,6 @@ public class ChessPeice : MonoBehaviour
     private void Start()
     {
         endState = GameObject.Find("EndState").GetComponent<EndStateManager>();
-        pawnMoved = false;
 
         renderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<BoxCollider2D>();
@@ -67,7 +65,6 @@ public class ChessPeice : MonoBehaviour
             currentTile = grid.tileSet[startingTileIndex];
             currentTile.GetComponent<Tile>().occupant = gameObject;
         }
-
 
         //Control colliders of peice sets based on turn
         if(white && Board.turn == Turn.Blackturn || !white && Board.turn == Turn.Whiteturn)
@@ -249,7 +246,7 @@ public class ChessPeice : MonoBehaviour
                 }
 
                 //Pawn double move in the begining
-                if(startingTileIndex == currentTile.GetComponent<Tile>().index && !pawnMoved)
+                if(startingTileIndex == currentTile.GetComponent<Tile>().index)
 				{
                     if(EqualsOffsets(behavior[offset], new int[] { -8, 8 }))
 					{
@@ -372,7 +369,6 @@ public class ChessPeice : MonoBehaviour
 			}
             
 		}
-        
     }
 
     bool EqualsOffsets(int offset, int[] check)
