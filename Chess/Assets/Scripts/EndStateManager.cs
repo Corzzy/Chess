@@ -82,6 +82,7 @@ public class EndStateManager : MonoBehaviour
 	public void EndGame(bool winner)
     {
         EndTimer();
+        DisablePeices();
         if (!winner)
         {
             //White wins
@@ -108,8 +109,19 @@ public class EndStateManager : MonoBehaviour
         }
     }
 
+    void DisablePeices()
+    {
+        GameObject[] peices = GameObject.FindGameObjectsWithTag("Peice");
+
+        foreach(GameObject peice in peices)
+        {
+            peice.GetComponent<ChessPeice>().enabled = false;
+            peice.GetComponent<BoxCollider2D>().enabled = false;
+        }
+    }
+
     //Button functions
-    public void Play()
+    public void PlayAgain()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

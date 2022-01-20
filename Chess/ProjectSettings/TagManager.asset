@@ -9,6 +9,7 @@ TagManager:
   - WhitePeice
   - BlackPeice
   - Turn
+  - Peice
   layers:
   - Default
   - TransparentFX

@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 109265194}
   m_Layer: 0
   m_Name: BlackRook (1)
-  m_TagString: BlackPeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -846,7 +846,7 @@ GameObject:
   - component: {fileID: 336694235}
   m_Layer: 0
   m_Name: WhiteQueen
-  m_TagString: WhitePeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -972,7 +972,7 @@ GameObject:
   - component: {fileID: 341399924}
   m_Layer: 0
   m_Name: BlackPawn (4)
-  m_TagString: BlackPeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1299,7 +1299,7 @@ GameObject:
   - component: {fileID: 348504853}
   m_Layer: 0
   m_Name: BlackPawn (3)
-  m_TagString: BlackPeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1471,7 +1471,7 @@ GameObject:
   - component: {fileID: 426830925}
   m_Layer: 0
   m_Name: WhiteRook
-  m_TagString: WhitePeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1597,7 +1597,7 @@ GameObject:
   - component: {fileID: 441013315}
   m_Layer: 0
   m_Name: WhiteKing
-  m_TagString: WhitePeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1723,7 +1723,7 @@ GameObject:
   - component: {fileID: 464281723}
   m_Layer: 0
   m_Name: WhitePawn (6)
-  m_TagString: WhitePeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1949,7 +1949,7 @@ GameObject:
   - component: {fileID: 499868356}
   m_Layer: 0
   m_Name: BlackHorse
-  m_TagString: BlackPeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2627,7 +2627,7 @@ GameObject:
   - component: {fileID: 740325538}
   m_Layer: 0
   m_Name: BlackRook
-  m_TagString: BlackPeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2921,7 +2921,7 @@ GameObject:
   - component: {fileID: 912538960}
   m_Layer: 0
   m_Name: WhitePawn (3)
-  m_TagString: WhitePeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3181,7 +3181,7 @@ GameObject:
   - component: {fileID: 940178851}
   m_Layer: 0
   m_Name: BlackHorse (1)
-  m_TagString: BlackPeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3389,7 +3389,7 @@ GameObject:
   - component: {fileID: 958947945}
   m_Layer: 0
   m_Name: BlackKnight
-  m_TagString: BlackPeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3850,7 +3850,7 @@ GameObject:
   - component: {fileID: 1051343688}
   m_Layer: 0
   m_Name: WhiteHorse (1)
-  m_TagString: WhitePeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4043,7 +4043,7 @@ GameObject:
   - component: {fileID: 1088686387}
   m_Layer: 0
   m_Name: WhiteKnight
-  m_TagString: WhitePeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4288,7 +4288,7 @@ GameObject:
   - component: {fileID: 1243391208}
   m_Layer: 0
   m_Name: WhitePawn (4)
-  m_TagString: WhitePeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4414,7 +4414,7 @@ GameObject:
   - component: {fileID: 1247974888}
   m_Layer: 0
   m_Name: WhiteRook (1)
-  m_TagString: WhitePeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4540,7 +4540,7 @@ GameObject:
   - component: {fileID: 1291578962}
   m_Layer: 0
   m_Name: WhiteKnight (1)
-  m_TagString: WhitePeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4799,7 +4799,7 @@ GameObject:
   - component: {fileID: 1401544168}
   m_Layer: 0
   m_Name: BlackPawn (6)
-  m_TagString: BlackPeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4925,7 +4925,7 @@ GameObject:
   - component: {fileID: 1403068859}
   m_Layer: 0
   m_Name: WhiteHorse
-  m_TagString: WhitePeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5118,7 +5118,7 @@ GameObject:
   - component: {fileID: 1426413577}
   m_Layer: 0
   m_Name: BlackKnight (1)
-  m_TagString: BlackPeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5244,7 +5244,7 @@ GameObject:
   - component: {fileID: 1437505708}
   m_Layer: 0
   m_Name: BlackPawn (2)
-  m_TagString: BlackPeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5571,7 +5571,7 @@ GameObject:
   - component: {fileID: 1561863067}
   m_Layer: 0
   m_Name: WhitePawn
-  m_TagString: WhitePeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5764,7 +5764,7 @@ GameObject:
   - component: {fileID: 1580836112}
   m_Layer: 0
   m_Name: WhitePawn (5)
-  m_TagString: WhitePeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6024,7 +6024,7 @@ GameObject:
   - component: {fileID: 1600543035}
   m_Layer: 0
   m_Name: WhitePawn (7)
-  m_TagString: WhitePeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6317,7 +6317,7 @@ GameObject:
   - component: {fileID: 1765208147}
   m_Layer: 0
   m_Name: BlackKing
-  m_TagString: BlackPeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6592,7 +6592,7 @@ GameObject:
   - component: {fileID: 1893537098}
   m_Layer: 0
   m_Name: BlackPawn (1)
-  m_TagString: BlackPeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6718,7 +6718,7 @@ GameObject:
   - component: {fileID: 1899579598}
   m_Layer: 0
   m_Name: BlackPawn
-  m_TagString: BlackPeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6844,7 +6844,7 @@ GameObject:
   - component: {fileID: 1945850300}
   m_Layer: 0
   m_Name: WhitePawn (1)
-  m_TagString: WhitePeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7037,7 +7037,7 @@ GameObject:
   - component: {fileID: 1996434024}
   m_Layer: 0
   m_Name: WhitePawn (2)
-  m_TagString: WhitePeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7297,7 +7297,7 @@ GameObject:
   - component: {fileID: 2046113265}
   m_Layer: 0
   m_Name: BlackPawn (7)
-  m_TagString: BlackPeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7490,7 +7490,7 @@ GameObject:
   - component: {fileID: 2064340815}
   m_Layer: 0
   m_Name: BlackPawn (5)
-  m_TagString: BlackPeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7683,7 +7683,7 @@ GameObject:
   - component: {fileID: 2096340178}
   m_Layer: 0
   m_Name: BlackQueen
-  m_TagString: BlackPeice
+  m_TagString: Peice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7880,7 +7880,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1124968539}
         m_TargetAssemblyTypeName: EndStateManager, Assembly-CSharp
-        m_MethodName: Play
+        m_MethodName: PlayAgain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
