@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
+    //For filling the board with tiles
     public GameObject tilePrefab;
-    public int gridSize = 64;
-    public double maxBound = 3.5;
-    public double minBound = -3.5;
+    public int gridSize = 64; //How many tiles are on the board
+    public double maxBound = 3.5; //Farthest positive coord
+    public double minBound = -3.5; //Farthest negative coord
     [HideInInspector] public GameObject[] tileSet;
 
     private void Start()
@@ -13,6 +14,7 @@ public class Grid : MonoBehaviour
         tileSet = GenerateTiles(maxBound, minBound, gridSize);
     }
 
+    //Fills the board with tiles
     GameObject[] GenerateTiles(double maxBound, double minBound, int size)
     {
         GameObject[] tiles = new GameObject[size];
@@ -34,6 +36,7 @@ public class Grid : MonoBehaviour
         return tiles;
     }
 
+    //Takes where the mouse is and finds the colosest tile to that point
     public GameObject SnapOnGrid(Vector3 mousePos)
 	{
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
@@ -43,6 +46,7 @@ public class Grid : MonoBehaviour
         return closestTile.gameObject;
 	}
 
+    //Finds the closest tile to a point
     Transform FindClosestTile(Vector3 worldPos)
 	{
         float closestDistance = 10f, oldDistance;

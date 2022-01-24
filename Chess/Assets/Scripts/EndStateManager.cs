@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
-using System;
 
 public class EndStateManager : MonoBehaviour
 {
@@ -11,11 +10,6 @@ public class EndStateManager : MonoBehaviour
     [Space]
     public TextMeshProUGUI winText;
     public TextMeshProUGUI timeText;
-
-    public Button playAgain;
-    Text playAgainText;
-    public Button quit;
-    Text quitText;
 
     const string blackWin = "Black Wins!";
     const string whiteWin = "White Wins!";
@@ -26,14 +20,12 @@ public class EndStateManager : MonoBehaviour
     int second;
     bool timer;
 
+    //Counting seconds
     const float targetSecond = 60.0f;
     float timePast;
 
     private void Start()
     {
-        playAgainText = playAgain.GetComponentInChildren<Text>(true);
-        quitText = quit.GetComponentInChildren<Text>(true);
-
         canvas.enabled = false;
         
         timePast = 0.0f;
@@ -41,11 +33,13 @@ public class EndStateManager : MonoBehaviour
         second = 0;
         totalTimeText = "";
 
+        //Begins counting the time
         StartTimer();
     }
 
 	private void Update()
 	{
+        //Counts how much time has past
         if(timer)
 		{
             timePast += Time.deltaTime;
@@ -69,6 +63,7 @@ public class EndStateManager : MonoBehaviour
         timer = true;
 	}
 
+    //Adds a zero to an into below 10 and converts it to a string
     string LeadingZero(int t)
 	{
         return t.ToString().PadLeft(2, '0');
@@ -79,10 +74,11 @@ public class EndStateManager : MonoBehaviour
         timer = false;
 	}
 
+    //Ends the game a displays who won
 	public void EndGame(bool winner)
     {
         EndTimer();
-        DisablePeices();
+        DisablePieces();
         if (!winner)
         {
             //White wins
@@ -109,14 +105,15 @@ public class EndStateManager : MonoBehaviour
         }
     }
 
-    void DisablePeices()
+    //Disables picking up the pieces
+    void DisablePieces()
     {
-        GameObject[] peices = GameObject.FindGameObjectsWithTag("Peice");
+        GameObject[] pieces = GameObject.FindGameObjectsWithTag("Piece");
 
-        foreach(GameObject peice in peices)
+        foreach(GameObject piece in pieces)
         {
-            peice.GetComponent<ChessPeice>().enabled = false;
-            peice.GetComponent<BoxCollider2D>().enabled = false;
+            piece.GetComponent<ChessPiece>().enabled = false;
+            piece.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 
@@ -128,7 +125,6 @@ public class EndStateManager : MonoBehaviour
 
     public void Quit()
     {
-        Debug.Log("Quit");
         Application.Quit();
     }
 }

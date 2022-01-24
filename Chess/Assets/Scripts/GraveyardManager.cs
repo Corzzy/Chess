@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GraveyardManager : MonoBehaviour
 {
-    [Header("Peice Sprites")]
+    [Header("Piece Sprites")]
     public Sprite whiteRook;
     public Sprite whitePawn;
     public Sprite whiteQueen;
@@ -17,9 +17,10 @@ public class GraveyardManager : MonoBehaviour
     public Sprite blackHorse;
 
     [Header("Graveyard Lists")]
-    public GameObject[] whitePeiceGraves;
-    public GameObject[] blackPeiceGraves;
+    public GameObject[] whitePieceGraves;
+    public GameObject[] blackPieceGraves;
 
+    //How many pieces are in the graveyard
     int whiteFilled;
     int blackFilled;
 
@@ -29,39 +30,40 @@ public class GraveyardManager : MonoBehaviour
         blackFilled = 0;
 	}
 
-	public void Bury(Peice peice, bool white)
+    //Take a killed piece and if its white and bury the correct piece
+	public void Bury(Piece piece, bool white)
 	{
         if(white)
 		{
-            SpriteRenderer whiteRenderer = whitePeiceGraves[whiteFilled].GetComponent<SpriteRenderer>();
-            switch (peice)
+            SpriteRenderer whiteRenderer = whitePieceGraves[whiteFilled].GetComponent<SpriteRenderer>();
+            switch (piece)
 			{
-                case Peice.Rook:
+                case Piece.Rook:
                     whiteRenderer.sprite = whiteRook;
                     whiteRenderer.enabled = true;
                     whiteFilled++;
                     break;
-                case Peice.Queen:
+                case Piece.Queen:
                     whiteRenderer.sprite = whiteQueen;
                     whiteRenderer.enabled = true;
                     whiteFilled++;
                     break;
-                case Peice.Pawn:
+                case Piece.Pawn:
                     whiteRenderer.sprite = whitePawn;
                     whiteRenderer.enabled = true;
                     whiteFilled++;
                     break;
-                case Peice.Knight:
+                case Piece.Knight:
                     whiteRenderer.sprite = whiteKnight;
                     whiteRenderer.enabled = true;
                     whiteFilled++;
                     break;
-                case Peice.King:
+                case Piece.King:
                     whiteRenderer.sprite = whiteKing;
                     whiteRenderer.enabled = true;
                     whiteFilled++;
                     break;
-                case Peice.Horse:
+                case Piece.Horse:
                     whiteRenderer.sprite = whiteHorse;
                     whiteRenderer.enabled = true;
                     whiteFilled++;
@@ -70,35 +72,35 @@ public class GraveyardManager : MonoBehaviour
 		}
         else
 		{
-            SpriteRenderer blackRenderer = blackPeiceGraves[blackFilled].GetComponent<SpriteRenderer>();
-            switch (peice)
+            SpriteRenderer blackRenderer = blackPieceGraves[blackFilled].GetComponent<SpriteRenderer>();
+            switch (piece)
             {
-                case Peice.Rook:
+                case Piece.Rook:
                     blackRenderer.sprite = blackRook;
                     blackRenderer.enabled = true;
                     blackFilled++;
                     break;
-                case Peice.Queen:
+                case Piece.Queen:
                     blackRenderer.sprite = blackQueen;
                     blackRenderer.enabled = true;
                     blackFilled++;
                     break;
-                case Peice.Pawn:
+                case Piece.Pawn:
                     blackRenderer.sprite = blackPawn;
                     blackRenderer.enabled = true;
                     blackFilled++;
                     break;
-                case Peice.Knight:
+                case Piece.Knight:
                     blackRenderer.sprite = blackKnight;
                     blackRenderer.enabled = true;
                     blackFilled++;
                     break;
-                case Peice.King:
+                case Piece.King:
                     blackRenderer.sprite = blackKing;
                     blackRenderer.enabled = true;
                     blackFilled++;
                     break;
-                case Peice.Horse:
+                case Piece.Horse:
                     blackRenderer.sprite = blackHorse;
                     blackRenderer.enabled = true;
                     blackFilled++;
