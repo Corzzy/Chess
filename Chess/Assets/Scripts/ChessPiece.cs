@@ -74,7 +74,7 @@ public class ChessPiece : MonoBehaviour
      * LegalMoves is all the moves in possibleMoves except for moves that already contain a friendly piece in them
      */
     List<GameObject> legalMoves = new List<GameObject>();
-    List<GameObject> possibleMoves = new List<GameObject>();
+    List<GameObject>    possibleMoves = new List<GameObject>();
 
     private void Start()
     {
