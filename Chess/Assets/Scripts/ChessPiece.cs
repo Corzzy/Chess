@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Piece { Rook, Queen, Pawn, Knight, King, Horse}
+public enum Piece { Rook, Queen, Pawn, Knight, King, Horse }
 
 public class ChessPiece : MonoBehaviour
 {
@@ -62,8 +62,8 @@ public class ChessPiece : MonoBehaviour
     EndStateManager endState;
 
     //Piece components
-    SpriteRenderer renderer;
-    BoxCollider2D collider;
+    new SpriteRenderer renderer;
+    new BoxCollider2D collider;
 
     //Highlight Moves and current position
     Grid grid;
@@ -74,7 +74,7 @@ public class ChessPiece : MonoBehaviour
      * LegalMoves is all the moves in possibleMoves except for moves that already contain a friendly piece in them
      */
     List<GameObject> legalMoves = new List<GameObject>();
-    List<GameObject>    possibleMoves = new List<GameObject>();
+    List<GameObject> possibleMoves = new List<GameObject>();
 
     private void Start()
     {
@@ -88,18 +88,18 @@ public class ChessPiece : MonoBehaviour
     private void Update()
     {
         //When the first update is called current tile is null
-        if(currentTile == null)
+        if (currentTile == null)
         {
             currentTile = grid.tileSet[startingTileIndex];
             currentTile.GetComponent<Tile>().occupant = gameObject;
         }
 
         //Control colliders of piece sets based on turn
-        if(white && Board.turn == Turn.Blackturn || !white && Board.turn == Turn.Whiteturn)
+        if (white && Board.turn == Turn.Blackturn || !white && Board.turn == Turn.Whiteturn)
         {
             collider.enabled = false;
         }
-        if(white && Board.turn == Turn.Whiteturn || !white && Board.turn == Turn.Blackturn)
+        if (white && Board.turn == Turn.Whiteturn || !white && Board.turn == Turn.Blackturn)
         {
             collider.enabled = true;
         }
@@ -114,7 +114,7 @@ public class ChessPiece : MonoBehaviour
         int repeat;
 
         //Identify what piece we are holding and what is behavior is
-        switch(piece)
+        switch (piece)
         {
             case Piece.Rook:
                 behavior = rookBehavior;
@@ -125,12 +125,12 @@ public class ChessPiece : MonoBehaviour
                 repeat = queenRepeat;
                 break;
             case Piece.Pawn:
-                if(white)
-				{
+                if (white)
+                {
                     behavior = whitePawnBehavior;
-				}
+                }
                 else
-				{
+                {
                     behavior = blackPawnBehavior;
                 }
                 repeat = pawnRepeat;
@@ -172,7 +172,7 @@ public class ChessPiece : MonoBehaviour
 
         //Snap piece to the tile the mouse is on
         GameObject snappedTile;
-        
+
         snappedTile = grid.SnapOnGrid(Input.mousePosition);
 
         if (snappedTile == currentTile)
@@ -184,23 +184,23 @@ public class ChessPiece : MonoBehaviour
         else
         {
             //Check if the move is legal to the pieces behavior
-            if(legalMoves.Contains(snappedTile))
-			{
+            if (legalMoves.Contains(snappedTile))
+            {
                 currentTile.GetComponent<Tile>().occupant = null;
 
                 //Check if the tile the piece has landed on has a enemy piece on it
-                if(snappedTile.GetComponent<Tile>().occupant != null)
-				{
+                if (snappedTile.GetComponent<Tile>().occupant != null)
+                {
                     ChessPiece piece = snappedTile.GetComponent<Tile>().occupant.GetComponent<ChessPiece>();
                     graveyard.Bury(piece.piece, piece.white);
                     Destroy(piece.gameObject);
 
                     //If a piece takes the enemy king end the game
-                    if(piece.piece == Piece.King)
+                    if (piece.piece == Piece.King)
                     {
                         endState.EndGame(piece.white);
                     }
-				}
+                }
 
                 //Change the pieces position to the new tile
                 currentTile = snappedTile;
@@ -213,7 +213,7 @@ public class ChessPiece : MonoBehaviour
                 Board.NextTurn();
             }
             else
-			{
+            {
                 //If the piece moves to a spot that is not legal with the pieces behavior snap it back to the tile it started at
                 transform.position = currentTile.transform.position;
                 UnHighlightMoves();
@@ -247,7 +247,7 @@ public class ChessPiece : MonoBehaviour
             //Prevents piece from going across the screen
             if (piece == Piece.Knight || piece == Piece.Queen || piece == Piece.Rook)
             {
-                if (!EqualsOffsets(behavior[offset], new int[] { -8, 8}))
+                if (!EqualsOffsets(behavior[offset], new int[] { -8, 8 }))
                 {
                     switch (behavior[offset])
                     {
@@ -284,8 +284,8 @@ public class ChessPiece : MonoBehaviour
                         continue;
                     }
                 }
-                if(bounds[1] == 0)
-				{
+                if (bounds[1] == 0)
+                {
                     if (EqualsOffsets(behavior[offset], new int[] { -7, 9 }))
                     {
                         continue;
@@ -293,26 +293,26 @@ public class ChessPiece : MonoBehaviour
                 }
 
                 //Pawn double move in the begining
-                if(startingTileIndex == currentTile.GetComponent<Tile>().index)
-				{
-                    if(EqualsOffsets(behavior[offset], new int[] { -8, 8 }))
-					{
+                if (startingTileIndex == currentTile.GetComponent<Tile>().index)
+                {
+                    if (EqualsOffsets(behavior[offset], new int[] { -8, 8 }))
+                    {
                         repeatTotal = pawnDoubleRepeat;
-					}
-				}
+                    }
+                }
             }
 
             //House behavior restrictions
-            if(piece == Piece.Horse)
-			{
-                if(EqualsOffsets(behavior[offset], new int[] { -10, 6 }))
-				{
+            if (piece == Piece.Horse)
+            {
+                if (EqualsOffsets(behavior[offset], new int[] { -10, 6 }))
+                {
                     if (bounds[0] < horseMaxMove)
                     {
                         continue;
                     }
                 }
-                if(EqualsOffsets(behavior[offset], new int[] {10, -6}))
+                if (EqualsOffsets(behavior[offset], new int[] { 10, -6 }))
                 {
                     if (bounds[1] < horseMaxMove)
                     {
@@ -321,7 +321,7 @@ public class ChessPiece : MonoBehaviour
                 }
                 if (bounds[0] < horseMinMove)
                 {
-                    if(EqualsOffsets(behavior[offset], new int[] {15, -17}))
+                    if (EqualsOffsets(behavior[offset], new int[] { 15, -17 }))
                     {
                         continue;
                     }
@@ -333,13 +333,13 @@ public class ChessPiece : MonoBehaviour
                         continue;
                     }
                 }
-			}
+            }
             //Prevents king from going accross the screen
-            if(piece == Piece.King)
+            if (piece == Piece.King)
             {
                 if (bounds[0] == 0)
                 {
-                    if (EqualsOffsets(behavior[offset], new int[] { -9, 7, -1}))
+                    if (EqualsOffsets(behavior[offset], new int[] { -9, 7, -1 }))
                     {
                         continue;
                     }
@@ -362,35 +362,35 @@ public class ChessPiece : MonoBehaviour
             {
                 //What tile index should we check
                 int gridNum = currentTile.GetComponent<Tile>().index + (behavior[offset] * repeats);
-                
+
                 //Check if move is within the grid
                 if (gridNum >= grid.tileSet.Length || gridNum < 0)
-				{
+                {
                     break;
-				}
+                }
 
                 tileObject = grid.tileSet[gridNum];
 
                 Tile tile = tileObject.GetComponent<Tile>();
-                
-                if(tile.occupant == null)
-				{
+
+                if (tile.occupant == null)
+                {
                     //If piece is pawn don't let it move diagonal when no piece is their
-                    if(piece != Piece.Pawn)
-					{
-                        possibleMoves.Add(tileObject);
-                        legalMoves.Add(tileObject);
-                        tile.SetTileColor(Occupants.clear);
-                    } 
-                    else if(EqualsOffsets(behavior[offset], new int[] { -8, 8 }))
-					{
+                    if (piece != Piece.Pawn)
+                    {
                         possibleMoves.Add(tileObject);
                         legalMoves.Add(tileObject);
                         tile.SetTileColor(Occupants.clear);
                     }
-				}
-                else if(IsEnemy(tile.occupant))
-				{
+                    else if (EqualsOffsets(behavior[offset], new int[] { -8, 8 }))
+                    {
+                        possibleMoves.Add(tileObject);
+                        legalMoves.Add(tileObject);
+                        tile.SetTileColor(Occupants.clear);
+                    }
+                }
+                else if (IsEnemy(tile.occupant))
+                {
                     //If piece is pawn don't let it attack enemys from infront of them
                     if (piece != Piece.Pawn)
                     {
@@ -400,7 +400,7 @@ public class ChessPiece : MonoBehaviour
                         nextClear = false;
                     }
                     else
-					{
+                    {
                         if (!EqualsOffsets(behavior[offset], new int[] { -8, 8 }))
                         {
                             possibleMoves.Add(tileObject);
@@ -413,58 +413,58 @@ public class ChessPiece : MonoBehaviour
                             nextClear = false;
                         }
                     }
-				}
+                }
                 else
-				{
+                {
                     possibleMoves.Add(tileObject);
                     tile.SetTileColor(Occupants.friendly);
                     nextClear = false;
-				}
+                }
                 repeats++;
-			}
-            
-		}
+            }
+
+        }
     }
 
     //Takes a number and checks if that number is equal to any number in the array given
     bool EqualsOffsets(int offset, int[] check)
-	{
-        foreach(int possibleOffset in check)
-		{
-            if(possibleOffset == offset)
-			{
+    {
+        foreach (int possibleOffset in check)
+        {
+            if (possibleOffset == offset)
+            {
                 return true;
-			}
-		}
+            }
+        }
         return false;
-	}
+    }
 
     //Finds the distance from the right and left sides
     int[] MapBounds(int index)
-	{
+    {
         int[] bounds = new int[2];
 
         bounds[0] = index;
         bounds[1] = Mathf.Abs(index - 7);
 
         return bounds;
-	} 
+    }
 
     //Checks if the piece give is a enemy
     bool IsEnemy(GameObject piece)
-	{
+    {
         bool otherWhite = piece.GetComponent<ChessPiece>().white;
-        if(otherWhite && white || !otherWhite && !white)
-		{
+        if (otherWhite && white || !otherWhite && !white)
+        {
             return false;
-		}
+        }
         return true;
-	}
+    }
 
     //Highlights the moves in the possible moves list
     void HighlightMoves()
     {
-        foreach(GameObject tile in possibleMoves)
+        foreach (GameObject tile in possibleMoves)
         {
             tile.GetComponent<SpriteRenderer>().enabled = true;
         }
@@ -472,7 +472,7 @@ public class ChessPiece : MonoBehaviour
 
     //Unhighlights the moves in the possible moves list
     void UnHighlightMoves()
-	{
+    {
         foreach (GameObject tile in possibleMoves)
         {
             tile.GetComponent<SpriteRenderer>().enabled = false;

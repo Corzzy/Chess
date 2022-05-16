@@ -9,7 +9,7 @@ public class Board : MonoBehaviour
     public int size = 8; //How many tiles the board will be split into
     public int worldWidth = 512, worldHeight = 512; //Resolution of the board
     int localWidth, localHeight; //Dimensions of each idividual tile
-    
+
     [Space]
     public Color colorOdd;
     public Color colorEven;
@@ -17,7 +17,7 @@ public class Board : MonoBehaviour
     [Header("TurnSystem")]
     public static Turn turn;
     public static SpriteRenderer turnRenderer;
-    
+
 
     private void Start()
     {
@@ -34,7 +34,7 @@ public class Board : MonoBehaviour
     //Changes turn and the box around the boards color to whoevers turn it is
     public static void NextTurn()
     {
-        if(turn == Turn.Whiteturn)
+        if (turn == Turn.Whiteturn)
         {
             turn = Turn.Blackturn;
             turnRenderer.color = Color.black;
@@ -49,15 +49,15 @@ public class Board : MonoBehaviour
     //Iterates through every pixel in the board
     Texture2D GenerateTexture()
     {
-        Texture2D texture = new Texture2D(worldWidth,worldHeight);
+        Texture2D texture = new Texture2D(worldWidth, worldHeight);
 
         //Generate board
-        for(int x = 0; x < worldWidth; x++)
+        for (int x = 0; x < worldWidth; x++)
         {
-            for(int y = 0; y < worldHeight; y++)
+            for (int y = 0; y < worldHeight; y++)
             {
                 Color color = GenerateColor(x, y);
-                
+
                 texture.SetPixel(x, y, color);
             }
         }
@@ -76,16 +76,16 @@ public class Board : MonoBehaviour
          */
 
         //Changes the x pixel coord into a number from 1 to size
-        if(x == 0)
+        if (x == 0)
         {
             widthUnit = 0;
-        } 
+        }
         else
         {
             widthUnit = x / localWidth;
         }
         //Changes the y pixel coord into a number from 1 to size
-        if(y == 0)
+        if (y == 0)
         {
             heightUnit = 0;
         }
@@ -97,9 +97,9 @@ public class Board : MonoBehaviour
         /*
          * Finds if the tile which the pixel is appart of is even or odd
          */
-        if(heightUnit % 2 != 0)
+        if (heightUnit % 2 != 0)
         {
-            if(widthUnit % 2 == 0)
+            if (widthUnit % 2 == 0)
             {
                 odd = false;
             }
