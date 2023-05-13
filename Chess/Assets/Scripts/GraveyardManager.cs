@@ -24,20 +24,21 @@ public class GraveyardManager : MonoBehaviour
     int whiteFilled;
     int blackFilled;
 
-	private void Start()
-	{
+    private void Start()
+    {
         whiteFilled = 0;
         blackFilled = 0;
-	}
+    }
 
     //Take a killed piece and if its white and bury the correct piece
-	public void Bury(Piece piece, bool white)
-	{
-        if(white)
-		{
+    public void Bury(Piece piece, bool white)
+    {
+        if (white)
+        {
             SpriteRenderer whiteRenderer = whitePieceGraves[whiteFilled].GetComponent<SpriteRenderer>();
+
             switch (piece)
-			{
+            {
                 case Piece.Rook:
                     whiteRenderer.sprite = whiteRook;
                     whiteRenderer.enabled = true;
@@ -69,9 +70,9 @@ public class GraveyardManager : MonoBehaviour
                     whiteFilled++;
                     break;
             }
-		}
+        }
         else
-		{
+        {
             SpriteRenderer blackRenderer = blackPieceGraves[blackFilled].GetComponent<SpriteRenderer>();
             switch (piece)
             {
@@ -107,5 +108,5 @@ public class GraveyardManager : MonoBehaviour
                     break;
             }
         }
-	}
+    }
 }

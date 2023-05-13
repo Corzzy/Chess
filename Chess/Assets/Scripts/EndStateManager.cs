@@ -27,7 +27,7 @@ public class EndStateManager : MonoBehaviour
     private void Start()
     {
         canvas.enabled = false;
-        
+
         timePast = 0.0f;
         minute = 0;
         second = 0;
@@ -37,45 +37,45 @@ public class EndStateManager : MonoBehaviour
         StartTimer();
     }
 
-	private void Update()
-	{
+    private void Update()
+    {
         //Counts how much time has past
-        if(timer)
-		{
+        if (timer)
+        {
             timePast += Time.deltaTime;
 
             second = Mathf.FloorToInt(timePast);
 
-            if(timePast >= targetSecond)
-			{
+            if (timePast >= targetSecond)
+            {
                 minute += 1;
                 timePast = 0;
-			}
+            }
 
             string minuteString = minute.ToString();
-            
+
             totalTimeText = minuteString + ":" + LeadingZero(second);
         }
-	}
+    }
 
-	void StartTimer()
-	{
+    void StartTimer()
+    {
         timer = true;
-	}
+    }
 
     //Adds a zero to an into below 10 and converts it to a string
     string LeadingZero(int t)
-	{
+    {
         return t.ToString().PadLeft(2, '0');
-	}
+    }
 
     void EndTimer()
-	{
+    {
         timer = false;
-	}
+    }
 
     //Ends the game a displays who won
-	public void EndGame(bool winner)
+    public void EndGame(bool winner)
     {
         EndTimer();
         DisablePieces();
@@ -108,9 +108,9 @@ public class EndStateManager : MonoBehaviour
     //Disables picking up the pieces
     void DisablePieces()
     {
-        GameObject[] pieces = GameObject.FindGameObjectsWithTag("Piece");
+        GameObject[] pieces = GameObject.FindGameObjectsWithTag("Peice");
 
-        foreach(GameObject piece in pieces)
+        foreach (GameObject piece in pieces)
         {
             piece.GetComponent<ChessPiece>().enabled = false;
             piece.GetComponent<BoxCollider2D>().enabled = false;
